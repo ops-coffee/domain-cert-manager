@@ -49,16 +49,10 @@ docker-compose up -d
 
 ```
 # docker logs ops-app -n 10
-启动服务...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-supervisor is already the newest version (4.2.5-1).
-gunicorn is already the newest version (20.1.0-6+deb12u1).
-0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
-Unlinking stale socket /var/run/supervisor.sock
+👤 创建管理员账号...
+🚀 启动服务...
 Starting supervisor: supervisord.
-Wed Apr 16 15:00:21 CST 2025 - Start ok. ^_^
+Mon Oct 27 18:57:31 CST 2025 ✅ Start ok. ^_^
 ```
 
 5. 登录账号密码
