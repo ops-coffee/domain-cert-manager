@@ -1,22 +1,6 @@
 #!/bin/bash
 set -e
 
-# 等待 MySQL 启动就绪
-echo "⏳ Waiting for MySQL to be ready..."
-until mysqladmin ping -h "ops-mysql" --silent; do
-    echo "⏱  MySQL is unavailable - retrying in 2s"
-    sleep 2
-done
-echo "✅ MySQL is ready!"
-
-# 等待 Redis 启动就绪
-echo "⏳ Waiting for Redis to be ready..."
-until redis-cli -h "ops-redis" ping | grep PONG > /dev/null; do
-    echo "⏱  Redis is unavailable - retrying in 2s"
-    sleep 2
-done
-echo "✅ Redis is ready!"
-
 # 初始化数据库及静态资源
 echo "⚙️ Running Django migrations & collectstatic..."
 
