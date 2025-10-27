@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>域名证书管理系统 · 免费部署</title>
+  <meta name="description" content="企业级域名与证书全生命周期管理：多云适配、自动化工单、免费证书、智能风险扫描与合规审计。" />
+  <meta name="keywords" content="域名管理,证书管理,企业运维,多云,自动化工单" />
+
+  <!-- Open Graph & Twitter Card -->
+  <meta property="og:title" content="域名证书管理系统 · 免费部署">
+  <meta property="og:description" content="企业级域名与证书全生命周期管理：多云适配、自动化工单、免费证书、智能风险扫描与合规审计。">
+  <meta property="og:image" content="https://domain.ops-coffee.com/og-image.png">
+  <meta property="og:url" content="https://domain.ops-coffee.com">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.png" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<!-- Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+
+  <style>
+    :root{--glass:#ffffff;--muted:#6b7280}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial; background:#f8fafc;color:#0f172a;scroll-behavior:smooth;}
+    .hero-gradient{background:linear-gradient(90deg,#0ea5e9 0%,#3b82f6 50%,#6366f1 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .card{background:var(--glass);border:1px solid #eef2f7;border-radius:14px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,0.04);transition:transform 0.2s, box-shadow 0.2s;}
+    .card:hover, .card:focus-within{transform:translateY(-4px); box-shadow:0 12px 24px rgba(0,0,0,0.08);}
+    pre{background:#0b1220;color:#e6f0ff;padding:16px;border-radius:8px;overflow:auto}
+    .badge{background:#eef2ff;color:#065fcb;padding:6px 10px;border-radius:999px;font-weight:600}
+    table th, table td{border:1px solid #e5e7eb;padding:12px;text-align:left;}
+    table thead th{background:#f3f4f6;color:#374151;font-weight:600;}
+    table tbody tr:hover{background:#f1f5f9;}
+    .scroll-x{overflow-x:auto;}
+    .animate-slide-in{animation:slide-in 0.8s ease-out;}
+    @keyframes slide-in{0%{opacity:0; transform:translateY(12px);}100%{opacity:1; transform:translateY(0);}}
+  </style>
+
+<style>
+  /* 自定义 Swiper 箭头样式 */
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #3b82f6; /* 蓝色，更贴合品牌色 */
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.2s;
+  }
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    background-color: #3b82f6;
+    color: white;
+  }
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 bg-white/60 backdrop-blur-md border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="text-xl font-bold text-slate-900">域名证书管理系统</div>
+      <span class="text-sm text-slate-500">免费 · 多云 · 自动化</span>
+    </div>
+    <nav class="hidden md:flex items-center gap-6 text-sm text-slate-700">
+      <a href="#why" class="hover:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded">痛点</a>
+      <a href="#capabilities" class="hover:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded">能力</a>
+      <a href="#lifecycle" class="hover:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded">生命周期</a>
+      <a href="#security" class="hover:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded">安全</a>
+      <a href="https://blog.ops-coffee.com/devops/domain.html" class="hover:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded">文档</a>
+      <a href="https://github.com/ops-coffee/domain-cert-manager" class="px-3 py-2 border border-slate-200 rounded-md text-slate-800 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-sky-500">免费下载</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<main class="pt-10">
+<section class="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-10 items-center">
+  <div data-aos="fade-right">
+    <div class="badge inline-block animate-slide-in">免费</div>
+    <h1 class="mt-6 text-4xl lg:text-5xl font-extrabold hero-gradient leading-tight">
+      企业级域名与证书全生命周期智能管理
+    </h1>
+    <p class="mt-6 text-lg text-slate-600 leading-relaxed">
+      一套系统覆盖域名与证书全生命周期 → 自动申请、审批即生效 → 多云资产可见可控 → 运维效率提升 50%+
+    </p>
+
+    <div class="mt-8 flex flex-col sm:flex-row flex-wrap gap-4">
+      <a href="https://domain.ops-coffee.com" class="px-6 py-3 rounded-md bg-sky-600 text-white shadow-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 transition text-center"> 部署文档</a>
+      <a href="https://github.com/ops-coffee/domain-cert-manager" class="px-6 py-3 rounded-md border border-slate-200 text-slate-800 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 transition flex items-center gap-1 justify-center"><i class="ri-download-line"></i> 免费下载</a>
+    </div>
+
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-700">
+      <div class="card flex items-start gap-4">
+        <i class="ri-shield-user-line text-2xl text-sky-600"></i>
+        <div>
+          <div class="font-medium">纵深安全</div>
+          <p class="text-xs text-slate-500">自动扫描、告警与工单闭环，降低潜在安全风险</p>
+        </div>
+      </div>
+      <div class="card flex items-start gap-4">
+        <i class="ri-stack-line text-2xl text-sky-600"></i>
+        <div>
+          <div class="font-medium">多云适配</div>
+          <p class="text-xs text-slate-500">统一接入阿里云、腾讯云、Cloudflare、GoDaddy 等</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-aos="fade-left" class="relative">
+    <div class="card">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <div class="text-sm text-slate-500">总域名数</div>
+          <div class="text-2xl font-bold">1,248</div>
+        </div>
+        <div>
+          <div class="text-sm text-slate-500">即将到期证书</div>
+          <div class="text-2xl font-bold text-amber-600">18</div>
+        </div>
+      </div>
+
+      <!-- Swiper -->
+      <div class="swiper-container h-[280px] rounded-lg border border-slate-100 overflow-hidden">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide flex items-center justify-center bg-slate-50 text-slate-400 text-xl">
+            <img src="https://static.ops-coffee.com/static/images/2025/0613.01.png" alt="域名证书系统截图">
+          </div>
+          <div class="swiper-slide flex items-center justify-center bg-slate-50 text-slate-400 text-xl">
+            <img src="https://static.ops-coffee.com/static/images/2025/0613.04.png" alt="域名证书系统截图">
+          </div>
+          <div class="swiper-slide flex items-center justify-center bg-slate-50 text-slate-400 text-xl">
+            <img src="https://static.ops-coffee.com/static/images/2025/0613.05.png" alt="域名证书系统截图">
+          </div>
+          <!-- 可以继续添加更多截图 -->
+        </div>
+        <!-- 分页器 -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+
+      <div class="mt-4 grid grid-cols-3 gap-3 text-xs text-slate-500 text-center">
+        <div>解析记录</div>
+        <div>证书状态</div>
+        <div>风险等级</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY (Painpoints) -->
+<section id="why" class="max-w-7xl mx-auto px-6 py-12" data-aos="fade-up">
+  <h2 class="text-3xl font-semibold text-slate-800 text-center">常见痛点（为什么选择我们）</h2>
+  <div class="mt-8 grid md:grid-cols-3 gap-6">
+    <div class="card flex items-start gap-4 animate-slide-in">
+      <i class="ri-error-warning-line text-3xl text-rose-500"></i>
+      <div>
+        <h3 class="font-medium">资产分散、信息孤岛</h3>
+        <p class="mt-2 text-slate-600">域名注册商、云账号与团队多，缺乏统一视图与责任分配，容易出现“失踪域名”。</p>
+      </div>
+    </div>
+    <div class="card flex items-start gap-4 animate-slide-in">
+      <i class="ri-time-line text-3xl text-amber-500"></i>
+      <div>
+        <h3 class="font-medium">证书与域名到期风险</h3>
+        <p class="mt-2 text-slate-600">证书/域名过期导致业务中断或浏览器告警，影响品牌与可用性。</p>
+      </div>
+    </div>
+    <div class="card flex items-start gap-4 animate-slide-in">
+      <i class="ri-settings-3-line text-3xl text-sky-500"></i>
+      <div>
+        <h3 class="font-medium">变更流程混乱，缺乏审计</h3>
+        <p class="mt-2 text-slate-600">手工申请、邮件/IM流转、缺少可审计流程与自动生效机制。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities" class="max-w-7xl mx-auto px-6 py-16 bg-slate-50 rounded-lg" data-aos="fade-up">
+  <h2 class="text-3xl font-semibold text-slate-800 text-center mb-8">八大核心能力 · 提升企业域名管理效率</h2>
+  <div class="grid lg:grid-cols-2 gap-8">
+    <div class="space-y-6">
+      <div class="card flex items-start gap-4">
+        <i class="ri-git-branch-line text-3xl text-sky-600"></i>
+        <div>
+          <h3 class="font-medium">1. 域名全生命周期管理</h3>
+          <p class="mt-2 text-slate-600">全流程在线化、可审计并绑定责任人，支持周期性盘点，确保资产安全与透明。</p>
+        </div>
+      </div>
+      <div class="card flex items-start gap-4">
+        <i class="ri-task-line text-3xl text-sky-600"></i>
+        <div>
+          <h3 class="font-medium">2. 工单自动化与审批即生效</h3>
+          <p class="mt-2 text-slate-600">申请→系统生成工单→审批通过即生效，无需手动操作，节省 >50% 运维时间。</p>
+        </div>
+      </div>
+      <div class="card flex items-start gap-4">
+        <i class="ri-key-2-line text-3xl text-sky-600"></i>
+        <div>
+          <h3 class="font-medium">3. 免费证书申请与集中证书库</h3>
+          <p class="mt-2 text-slate-600">支持 Let’s Encrypt 一键申请，集中管理、权限化下载、自动续期与部署策略。</p>
+        </div>
+      </div>
+      <div class="card flex items-start gap-4">
+        <i class="ri-search-eye-line text-3xl text-sky-600"></i>
+        <div>
+          <h3 class="font-medium">4. 自动化扫描与智能风险引擎</h3>
+          <p class="mt-2 text-slate-600">定期探测解析记录与端点，自动监控证书到期、HTTPS 覆盖率、子域接管等多维度风险。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      <div class="card flex items-start gap-4">
+        <i class="ri-repeat-line text-3xl text-sky-600"></i>
+        <div>
+          <h3 class="font-medium">5. 自动处置与工单闭环</h3>
+          <p class="mt-2 text-slate-600">风险发现→工单生成→指派修复→验证完成，形成完整闭环，降低人为漏报风险。</p>
+        </div>
+      </div>
+      <div class="card flex items-start gap-4">
+        <i class="ri-stack-line text-3xl text-sky-600"></i>
+        <div>
+          <h3 class="font-medium">6. 多厂商适配层（可插拔驱动）</h3>
+          <p class="mt-2 text-slate-600">统一 API 层接入阿里云、腾讯云、Cloudflare、GoDaddy、自建 BIND 等，扩展无需改动核心业务。</p>
+        </div>
+      </div>
+      <div class="card flex items-start gap-4">
+        <i class="ri-database-2-line text-3xl text-sky-600"></i>
+        <div>
+          <h3 class="font-medium">7. CMDB 与资产盘点</h3>
+          <p class="mt-2 text-slate-600">实时同步资产库，支持字段级搜索、归属分类与周期性盘点，确保企业域名制度化管理。</p>
+        </div>
+      </div>
+      <div class="card flex items-start gap-4">
+        <i class="ri-notification-line text-3xl text-sky-600"></i>
+        <div>
+          <h3 class="font-medium">8. 通知与集成</h3>
+          <p class="mt-2 text-slate-600">支持邮件、Webhook、企业微信、钉钉，多渠道告警，提供 RESTful API 与 CLI 接口，轻松集成 CI/CD 流水线。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFECYCLE -->
+<section id="lifecycle" class="max-w-7xl mx-auto px-6 py-16" data-aos="fade-up">
+  <h2 class="text-3xl font-semibold text-slate-800 text-center mb-8">域名与证书的全生命周期</h2>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm text-slate-700">
+    <div class="card">
+      <h4 class="font-medium">1. 申请（Self-Service）</h4>
+      <p class="mt-2">开发/产品通过向导式表单提交申请，填写主机记录、TTL、用途与负责人，系统校验并生成工单；可选择同时申请免费证书。</p>
+    </div>
+    <div class="card">
+      <h4 class="font-medium">2. 审批（Workflow）</h4>
+      <p class="mt-2">工单按照预设审批流自动分发；审批人可查看影响范围、风险建议与变更预览；审批通过后可选择自动生效或人工触发。</p>
+    </div>
+    <div class="card">
+      <h4 class="font-medium">3. 下发与生效</h4>
+      <p class="mt-2">平台通过驱动层直接调用目标 DNS 提供商 API 下发解析记录；支持幂等操作、回滚与变更记录保存。</p>
+    </div>
+    <div class="card">
+      <h4 class="font-medium">4. 监控 → 盘点 → 下线</h4>
+      <p class="mt-2">定期监控解析状态与证书，资产负责人进行定期盘点确认；确认下线后可自动生成下线工单并安全撤销解析。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section id="security" class="max-w-7xl mx-auto px-6 py-16 bg-slate-50 rounded-lg" data-aos="fade-up">
+  <h2 class="text-3xl font-semibold text-slate-800 text-center mb-8">主动式纵深安全与合规</h2>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-slate-700">
+    <div class="card flex items-start gap-4">
+      <i class="ri-shield-user-line text-3xl text-sky-600"></i>
+      <div>
+        <h4 class="font-medium">访问与权限</h4>
+        <p class="mt-2 text-slate-600">基于 RBAC 的细粒度权限模型，支持项目级、记录级的权限分配与审批链控制。</p>
+      </div>
+    </div>
+    <div class="card flex items-start gap-4">
+      <i class="ri-key-2-line text-3xl text-sky-600"></i>
+      <div>
+        <h4 class="font-medium">凭证与密钥保护</h4>
+        <p class="mt-2 text-slate-600">所有 API Keys / 私钥在持久化前使用 AES-256 加密；支持 KMS 集成与密钥轮换策略。</p>
+      </div>
+    </div>
+    <div class="card flex items-start gap-4">
+      <i class="ri-file-list-3-line text-3xl text-sky-600"></i>
+      <div>
+        <h4 class="font-medium">审计与不可篡改日志</h4>
+        <p class="mt-2 text-slate-600">所有操作生成审计日志，支持导出与归档，确保操作可追溯，满足安全与合规要求。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section id="comparison" class="max-w-7xl mx-auto px-6 py-16" data-aos="fade-up">
+  <h2 class="text-3xl font-semibold text-slate-800 text-center mb-8">与传统方式对比</h2>
+  <div class="scroll-x">
+    <table class="w-full border-collapse" role="table">
+      <caption class="sr-only">域名证书管理系统与传统手工管理对比表</caption>
+      <thead>
+        <tr>
+          <th scope="col">功能</th>
+          <th scope="col">传统手工管理</th>
+          <th scope="col">域名证书管理系统</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>资产统一视图</td>
+          <td>❌ 分散、信息孤岛</td>
+          <td class="text-sky-600 font-medium">✅ 全局可见，责任分配清晰</td>
+        </tr>
+        <tr>
+          <td>证书续期</td>
+          <td>❌ 手动提醒，易过期</td>
+          <td class="text-sky-600 font-medium">✅ 自动续期与提醒</td>
+        </tr>
+        <tr>
+          <td>工单审批</td>
+          <td>❌ 邮件/IM 流转，效率低</td>
+          <td class="text-sky-600 font-medium">✅ 自动化流程，审批即生效</td>
+        </tr>
+        <tr>
+          <td>多厂商适配</td>
+          <td>❌ 每个厂商单独操作</td>
+          <td class="text-sky-600 font-medium">✅ API 层统一接入</td>
+        </tr>
+        <tr>
+          <td>安全监控</td>
+          <td>❌ 缺乏实时监控与告警</td>
+          <td class="text-sky-600 font-medium">✅ 风险扫描 + 告警 + 工单闭环</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download" class="max-w-7xl mx-auto px-6 py-16 bg-sky-50 rounded-lg text-center" data-aos="fade-up">
+  <h2 class="text-3xl font-semibold text-slate-800 mb-6">立即免费部署</h2>
+  <p class="text-slate-700 mb-8">支持 Docker 部署、云主机或本地服务器，快速完成环境搭建与首次资产接入。</p>
+  <a href="https://github.com/ops-coffee/domain-cert-manager" class="px-8 py-4 bg-sky-600 text-white rounded-md text-lg shadow-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 transition inline-flex items-center justify-center"><i class="ri-download-line mr-2"></i> 免费下载</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-white border-t border-gray-100 mt-16">
+  <div class="max-w-7xl mx-auto px-6 py-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-slate-700">
+    <div>
+      <h3 class="font-semibold mb-4">域名证书管理系统</h3>
+      <p class="text-sm">一站式企业域名与证书管理平台，免费部署，多云适配，提升运维效率与安全。</p>
+    </div>
+    <div>
+      <h3 class="font-semibold mb-4">联系我们</h3>
+      <ul class="space-y-2 text-sm">
+        <li>邮箱: <a href="mailto:ops_coffee@163.com" class="text-sky-600 hover:underline">ops_coffee@163.com</a></li>
+        <li>微信: DREAM-FIRE-2024</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-semibold mb-4">关注我们</h3>
+      <div class="flex gap-4 text-2xl items-center relative">
+        <!-- GitHub -->
+        <a href="https://github.com/ops-coffee/domain-cert-manager" target="_blank" class="hover:text-sky-600">
+          <i class="ri-github-fill"></i>
+        </a>
+
+        <!-- 微信公众号 -->
+        <div class="group relative">
+          <i class="ri-wechat-line hover:text-sky-600 cursor-pointer"></i>
+          <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-32 bg-white border border-gray-200 rounded-lg p-2 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+            <img src="https://blog.ops-coffee.com/static/images/g-qrcode.jpg" alt="运维咖啡吧公众号二维码" class="w-full h-auto rounded" />
+            <p class="text-xs text-center text-slate-600 mt-1">运维咖啡吧</p>
+          </div>
+        </div>
+
+        <!-- 博客/网站 -->
+        <a href="https://blog.ops-coffee.com" target="_blank" class="hover:text-sky-600">
+          <i class="ri-earth-line"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="text-center text-sm text-slate-400 py-4 border-t border-gray-100">
+    © 2025 ops-coffee.cn. 保留所有权利。
+  </div>
+</footer>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper(".swiper-container", {
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    slidesPerView: 1,
+    spaceBetween: 20,
+  });
+</script>
+
+<script>
+  AOS.init({duration:800,once:true});
+</script>
+
+</body>
+</html>
+

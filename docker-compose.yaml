@@ -1,0 +1,82 @@
+services:
+
+  mysql:
+    image: crpi-deapf9g57ymi8i4g.cn-hangzhou.personal.cr.aliyuncs.com/ops_coffee/mysql:8.0
+    container_name: ops-mysql
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init-mysql.sql:/docker-entrypoint-initdb.d/init-mysql.sql
+    networks:
+      ops-coffee:
+        ipv4_address: 172.22.0.2
+    ports:
+      - '3306:3306'
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s   # ✅ 给 MySQL 初始化 SQL 预留时间
+
+  redis:
+    image: crpi-deapf9g57ymi8i4g.cn-hangzhou.personal.cr.aliyuncs.com/ops_coffee/redis:6.2
+    container_name: ops-redis
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - redis-data:/data
+    networks:
+      ops-coffee:
+        ipv4_address: 172.22.0.3
+    ports:
+      - '6379:6379'
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  ops-app:
+    image: crpi-deapf9g57ymi8i4g.cn-hangzhou.personal.cr.aliyuncs.com/ops_coffee/domain:latest
+    container_name: ops-app
+    environment:
+      TZ: Asia/Shanghai
+    depends_on:
+      mysql:
+        condition: service_healthy   # ✅ 等待 DB 完全 ready
+      redis:
+        condition: service_healthy
+    working_dir: /home/project/devops
+    volumes:
+      - ./init-application.sh:/tmp/init-application.sh
+    command: >
+      bash -c "chmod +x /tmp/init-application.sh && \
+               /tmp/init-application.sh && \
+               while true; do sleep 3600; done"
+    networks:
+      ops-coffee:
+        ipv4_address: 172.22.0.10
+    ports:
+      - '8001:8001'
+
+volumes:
+  mysql-data:
+    driver: local
+    name: mysql-data
+  redis-data:
+    driver: local
+    name: redis-data
+
+networks:
+  ops-coffee:
+    name: ops_coffee_network
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.22.0.0/24"
