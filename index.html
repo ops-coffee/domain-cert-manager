@@ -7,7 +7,6 @@
   <meta name="description" content="企业级域名与证书全生命周期管理：多云适配、自动化工单、免费证书、智能风险扫描与合规审计。" />
   <meta name="keywords" content="域名管理,证书管理,企业运维,多云,自动化工单" />
 
-  <!-- Open Graph & Twitter Card -->
   <meta property="og:title" content="域名证书管理系统 · 免费部署">
   <meta property="og:description" content="企业级域名与证书全生命周期管理：多云适配、自动化工单、免费证书、智能风险扫描与合规审计。">
   <meta property="og:image" content="https://domain.ops-coffee.com/og-image.png">
@@ -16,64 +15,17 @@
 
   <link rel="icon" href="favicon.png" />
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-<!-- Swiper CSS -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-/>
-
-  <style>
-    :root{--glass:#ffffff;--muted:#6b7280}
-    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial; background:#f8fafc;color:#0f172a;scroll-behavior:smooth;}
-    .hero-gradient{background:linear-gradient(90deg,#0ea5e9 0%,#3b82f6 50%,#6366f1 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .card{background:var(--glass);border:1px solid #eef2f7;border-radius:14px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,0.04);transition:transform 0.2s, box-shadow 0.2s;}
-    .card:hover, .card:focus-within{transform:translateY(-4px); box-shadow:0 12px 24px rgba(0,0,0,0.08);}
-    pre{background:#0b1220;color:#e6f0ff;padding:16px;border-radius:8px;overflow:auto}
-    .badge{background:#eef2ff;color:#065fcb;padding:6px 10px;border-radius:999px;font-weight:600}
-    table th, table td{border:1px solid #e5e7eb;padding:12px;text-align:left;}
-    table thead th{background:#f3f4f6;color:#374151;font-weight:600;}
-    table tbody tr:hover{background:#f1f5f9;}
-    .scroll-x{overflow-x:auto;}
-    .animate-slide-in{animation:slide-in 0.8s ease-out;}
-    @keyframes slide-in{0%{opacity:0; transform:translateY(12px);}100%{opacity:1; transform:translateY(0);}}
-  </style>
-
-<style>
-  /* 自定义 Swiper 箭头样式 */
-  .swiper-button-next,
-  .swiper-button-prev {
-    color: #3b82f6; /* 蓝色，更贴合品牌色 */
-    width: 2rem;
-    height: 2rem;
-    background-color: rgba(255,255,255,0.8);
-    border-radius: 9999px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: all 0.2s;
-  }
-  .swiper-button-next:hover,
-  .swiper-button-prev:hover {
-    background-color: #3b82f6;
-    color: white;
-  }
-  .swiper-button-next::after,
-  .swiper-button-prev::after {
-    font-size: 1.25rem;
-    font-weight: bold;
-  }
-</style>
 </head>
 <body class="antialiased">
 
-<!-- HEADER -->
 <header class="sticky top-0 z-40 bg-white/60 backdrop-blur-md border-b border-gray-100">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
     <div class="flex items-center gap-4">
@@ -85,13 +37,13 @@
       <a href="#capabilities" class="hover:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded">能力</a>
       <a href="#lifecycle" class="hover:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded">生命周期</a>
       <a href="#security" class="hover:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded">安全</a>
+      <a href="https://blog.ops-coffee.com/devops/domain-comments.html" class="hover:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded">反馈</a>
       <a href="https://blog.ops-coffee.com/devops/domain.html" class="hover:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded">文档</a>
       <a href="https://github.com/ops-coffee/domain-cert-manager" class="px-3 py-2 border border-slate-200 rounded-md text-slate-800 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-sky-500">免费下载</a>
     </nav>
   </div>
 </header>
 
-<!-- HERO -->
 <main class="pt-10">
 <section class="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-10 items-center">
   <div data-aos="fade-right">
@@ -139,7 +91,6 @@
         </div>
       </div>
 
-      <!-- Swiper -->
       <div class="swiper-container h-[280px] rounded-lg border border-slate-100 overflow-hidden">
         <div class="swiper-wrapper">
           <div class="swiper-slide flex items-center justify-center bg-slate-50 text-slate-400 text-xl">
@@ -151,9 +102,7 @@
           <div class="swiper-slide flex items-center justify-center bg-slate-50 text-slate-400 text-xl">
             <img src="https://static.ops-coffee.com/static/images/2025/0613.05.png" alt="域名证书系统截图">
           </div>
-          <!-- 可以继续添加更多截图 -->
-        </div>
-        <!-- 分页器 -->
+          </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
       </div>
@@ -167,7 +116,6 @@
   </div>
 </section>
 
-<!-- WHY (Painpoints) -->
 <section id="why" class="max-w-7xl mx-auto px-6 py-12" data-aos="fade-up">
   <h2 class="text-3xl font-semibold text-slate-800 text-center">常见痛点（为什么选择我们）</h2>
   <div class="mt-8 grid md:grid-cols-3 gap-6">
@@ -195,7 +143,6 @@
   </div>
 </section>
 
-<!-- CAPABILITIES -->
 <section id="capabilities" class="max-w-7xl mx-auto px-6 py-16 bg-slate-50 rounded-lg" data-aos="fade-up">
   <h2 class="text-3xl font-semibold text-slate-800 text-center mb-8">八大核心能力 · 提升企业域名管理效率</h2>
   <div class="grid lg:grid-cols-2 gap-8">
@@ -263,7 +210,6 @@
   </div>
 </section>
 
-<!-- LIFECYCLE -->
 <section id="lifecycle" class="max-w-7xl mx-auto px-6 py-16" data-aos="fade-up">
   <h2 class="text-3xl font-semibold text-slate-800 text-center mb-8">域名与证书的全生命周期</h2>
   <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm text-slate-700">
@@ -286,7 +232,6 @@
   </div>
 </section>
 
-<!-- SECURITY -->
 <section id="security" class="max-w-7xl mx-auto px-6 py-16 bg-slate-50 rounded-lg" data-aos="fade-up">
   <h2 class="text-3xl font-semibold text-slate-800 text-center mb-8">主动式纵深安全与合规</h2>
   <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-slate-700">
@@ -314,7 +259,6 @@
   </div>
 </section>
 
-<!-- COMPARISON -->
 <section id="comparison" class="max-w-7xl mx-auto px-6 py-16" data-aos="fade-up">
   <h2 class="text-3xl font-semibold text-slate-800 text-center mb-8">与传统方式对比</h2>
   <div class="scroll-x">
@@ -358,14 +302,12 @@
   </div>
 </section>
 
-<!-- DOWNLOAD -->
 <section id="download" class="max-w-7xl mx-auto px-6 py-16 bg-sky-50 rounded-lg text-center" data-aos="fade-up">
   <h2 class="text-3xl font-semibold text-slate-800 mb-6">立即免费部署</h2>
   <p class="text-slate-700 mb-8">支持 Docker 部署、云主机或本地服务器，快速完成环境搭建与首次资产接入。</p>
   <a href="https://github.com/ops-coffee/domain-cert-manager" class="px-8 py-4 bg-sky-600 text-white rounded-md text-lg shadow-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 transition inline-flex items-center justify-center"><i class="ri-download-line mr-2"></i> 免费下载</a>
 </section>
 
-<!-- FOOTER -->
 <footer class="bg-white border-t border-gray-100 mt-16">
   <div class="max-w-7xl mx-auto px-6 py-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-slate-700">
     <div>
@@ -382,12 +324,10 @@
     <div>
       <h3 class="font-semibold mb-4">关注我们</h3>
       <div class="flex gap-4 text-2xl items-center relative">
-        <!-- GitHub -->
         <a href="https://github.com/ops-coffee/domain-cert-manager" target="_blank" class="hover:text-sky-600">
           <i class="ri-github-fill"></i>
         </a>
 
-        <!-- 微信公众号 -->
         <div class="group relative">
           <i class="ri-wechat-line hover:text-sky-600 cursor-pointer"></i>
           <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-32 bg-white border border-gray-200 rounded-lg p-2 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
@@ -396,7 +336,6 @@
           </div>
         </div>
 
-        <!-- 博客/网站 -->
         <a href="https://blog.ops-coffee.com" target="_blank" class="hover:text-sky-600">
           <i class="ri-earth-line"></i>
         </a>
@@ -408,32 +347,9 @@
   </div>
 </footer>
 
-<!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script>
-  const swiper = new Swiper(".swiper-container", {
-    loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    slidesPerView: 1,
-    spaceBetween: 20,
-  });
-</script>
 
-<script>
-  AOS.init({duration:800,once:true});
-</script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
-

@@ -1,0 +1,112 @@
+/* 全局变量和基础样式 */
+:root {
+  --glass: #ffffff;
+  --muted: #6b7280;
+}
+
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: #f8fafc;
+  color: #0f172a;
+  scroll-behavior: smooth;
+}
+
+.hero-gradient {
+  background: linear-gradient(90deg, #0ea5e9 0%, #3b82f6 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card {
+  background: var(--glass);
+  border: 1px solid #eef2f7;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+pre {
+  background: #0b1220;
+  color: #e6f0ff;
+  padding: 16px;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+.badge {
+  background: #eef2ff;
+  color: #065fcb;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+table th,
+table td {
+  border: 1px solid #e5e7eb;
+  padding: 12px;
+  text-align: left;
+}
+
+table thead th {
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+}
+
+table tbody tr:hover {
+  background: #f1f5f9;
+}
+
+.scroll-x {
+  overflow-x: auto;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.8s ease-out;
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 自定义 Swiper 箭头样式 */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #3b82f6; /* 蓝色，更贴合品牌色 */
+  width: 2rem;
+  height: 2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
