@@ -33,13 +33,13 @@ sudo chmod +x /usr/local/bin/docker-compose
 2. 拉取deploy部署代码
 
 ```
-git pull git@github.com:ops-coffee/domain-cert-manager.git .
+mkdir domain-cert-manager && cd domain-cert-manager
+git clone git@github.com:ops-coffee/domain-cert-manager.git
 ```
 
-3. 进入deploy文件夹内并启动
+3. 启动docker compose
 
 ```
-cd deploy
 docker-compose up -d
 ```
 
