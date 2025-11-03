@@ -110,3 +110,133 @@ table tbody tr:hover {
   font-size: 1.25rem;
   font-weight: bold;
 }
+
+/* ===== 移动端适配增强 ===== */
+
+/* 让卡片与容器在小屏幕上有更紧凑的间距 */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  header .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  section {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  h1 {
+    font-size: 1.875rem; /* text-3xl */
+    line-height: 1.3;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+  }
+
+  /* 让 hero 部分改为单列 */
+  .grid.lg\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Swiper 图片保持等比缩放 */
+  .swiper-container img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* 按钮垂直堆叠 */
+  .mt-8.flex.flex-col.sm\:flex-row {
+    flex-direction: column !important;
+  }
+
+  /* 表格横向滚动提示 */
+  .scroll-x::after {
+    content: "← 左右滑动查看 →";
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 6px;
+  }
+
+  /* 页脚栅格改为单列 */
+  footer .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  footer .flex {
+    justify-content: flex-start;
+  }
+
+  /* 调整微信二维码弹出在视口内显示 */
+  footer .group:hover .group-hover\:opacity-100 {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* 优化导航栏：隐藏原桌面菜单，添加汉堡按钮 */
+  nav.md\:flex {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    color: #0f172a;
+    background: white;
+  }
+
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+  }
+
+  .mobile-nav a {
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .mobile-nav.active {
+    display: flex;
+  }
+}
+
+/* 小屏幕 Swiper 箭头更小更靠内 */
+@media (max-width: 640px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 1rem;
+  }
+}

@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://domain.ops-coffee.com">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="favicon.png" />
+  <link rel="icon" href="favicon.ico" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" />
@@ -41,36 +41,60 @@
       <a href="https://blog.ops-coffee.com/devops/domain.html" class="hover:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded">文档</a>
       <a href="https://github.com/ops-coffee/domain-cert-manager" class="px-3 py-2 border border-slate-200 rounded-md text-slate-800 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-sky-500">免费下载</a>
     </nav>
+
+    <!-- 移动端菜单按钮 -->
+    <button id="menu-btn" class="mobile-menu-btn md:hidden">
+      <i class="ri-menu-line text-xl"></i>
+    </button>
+
+    <!-- 移动端菜单 -->
+    <div id="mobile-nav" class="mobile-nav md:hidden text-slate-700 text-sm">
+      <a href="#why">痛点</a>
+      <a href="#capabilities">能力</a>
+      <a href="#lifecycle">生命周期</a>
+      <a href="#security">安全</a>
+      <a href="https://blog.ops-coffee.com/devops/domain-comments.html">反馈</a>
+      <a href="https://blog.ops-coffee.com/devops/domain.html">文档</a>
+      <a href="https://github.com/ops-coffee/domain-cert-manager" class="text-sky-600 font-medium">免费下载</a>
+    </div>
+
   </div>
 </header>
 
 <main class="pt-10">
-<section class="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-10 items-center">
-  <div data-aos="fade-right">
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+  <!-- 左侧文字部分 -->
+  <div data-aos="fade-right" class="order-1 lg:order-1 w-full max-w-full">
     <div class="badge inline-block animate-slide-in">免费</div>
-    <h1 class="mt-6 text-4xl lg:text-5xl font-extrabold hero-gradient leading-tight">
+    <h1 class="mt-4 sm:mt-6 text-3xl sm:text-4xl lg:text-5xl font-extrabold hero-gradient leading-tight">
       企业级域名与证书全生命周期智能管理
     </h1>
-    <p class="mt-6 text-lg text-slate-600 leading-relaxed">
+    <p class="mt-4 sm:mt-6 text-base sm:text-lg text-slate-600 leading-relaxed">
       一套系统覆盖域名与证书全生命周期 → 自动申请、审批即生效 → 多云资产可见可控 → 运维效率提升 50%+
     </p>
 
-    <div class="mt-8 flex flex-col sm:flex-row flex-wrap gap-4">
-      <a href="https://domain.ops-coffee.com" class="px-6 py-3 rounded-md bg-sky-600 text-white shadow-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 transition text-center"> 部署文档</a>
-      <a href="https://github.com/ops-coffee/domain-cert-manager" class="px-6 py-3 rounded-md border border-slate-200 text-slate-800 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 transition flex items-center gap-1 justify-center"><i class="ri-download-line"></i> 免费下载</a>
+    <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-4 w-full">
+      <a href="https://domain.ops-coffee.com"
+         class="px-6 py-3 rounded-md bg-sky-600 text-white shadow-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 transition text-center w-full sm:w-auto">
+         部署文档
+      </a>
+      <a href="https://github.com/ops-coffee/domain-cert-manager"
+         class="px-6 py-3 rounded-md border border-slate-200 text-slate-800 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 transition flex items-center gap-1 justify-center w-full sm:w-auto">
+         <i class="ri-download-line"></i> 免费下载
+      </a>
     </div>
 
-    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-700">
-      <div class="card flex items-start gap-4">
-        <i class="ri-shield-user-line text-2xl text-sky-600"></i>
-        <div>
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-700 w-full">
+      <div class="card flex items-start gap-4 w-full">
+        <i class="ri-shield-user-line text-2xl text-sky-600 flex-shrink-0"></i>
+        <div class="min-w-0">
           <div class="font-medium">纵深安全</div>
           <p class="text-xs text-slate-500">自动扫描、告警与工单闭环，降低潜在安全风险</p>
         </div>
       </div>
-      <div class="card flex items-start gap-4">
-        <i class="ri-stack-line text-2xl text-sky-600"></i>
-        <div>
+      <div class="card flex items-start gap-4 w-full">
+        <i class="ri-stack-line text-2xl text-sky-600 flex-shrink-0"></i>
+        <div class="min-w-0">
           <div class="font-medium">多云适配</div>
           <p class="text-xs text-slate-500">统一接入阿里云、腾讯云、Cloudflare、GoDaddy 等</p>
         </div>
@@ -78,10 +102,11 @@
     </div>
   </div>
 
-  <div data-aos="fade-left" class="relative">
-    <div class="card">
-      <div class="flex items-center justify-between mb-4">
-        <div>
+  <!-- 右侧图片展示部分 -->
+  <div data-aos="fade-left" class="relative order-2 lg:order-2 flex justify-center w-full max-w-full overflow-hidden">
+    <div class="card w-full max-w-none overflow-hidden p-4 sm:p-6">
+      <div class="flex items-center justify-between mb-4 flex-wrap">
+        <div class="mr-4 mb-2 sm:mb-0">
           <div class="text-sm text-slate-500">总域名数</div>
           <div class="text-2xl font-bold">1,248</div>
         </div>
@@ -91,18 +116,25 @@
         </div>
       </div>
 
-      <div class="swiper-container h-[280px] rounded-lg border border-slate-100 overflow-hidden">
+      <!-- ✅ 自适应宽度的 Swiper -->
+      <div class="swiper-container w-auto max-w-full h-auto aspect-[16/9] rounded-lg border border-slate-100 overflow-hidden">
         <div class="swiper-wrapper">
-          <div class="swiper-slide flex items-center justify-center bg-slate-50 text-slate-400 text-xl">
-            <img src="https://static.ops-coffee.com/static/images/2025/0613.01.png" alt="域名证书系统截图">
+          <div class="swiper-slide flex items-center justify-center bg-slate-50">
+            <img src="https://static.ops-coffee.com/static/images/2025/0613.01.png"
+                 alt="域名证书系统截图"
+                 class="w-full h-full object-contain">
           </div>
-          <div class="swiper-slide flex items-center justify-center bg-slate-50 text-slate-400 text-xl">
-            <img src="https://static.ops-coffee.com/static/images/2025/0613.04.png" alt="域名证书系统截图">
+          <div class="swiper-slide flex items-center justify-center bg-slate-50">
+            <img src="https://static.ops-coffee.com/static/images/2025/0613.04.png"
+                 alt="域名证书系统截图"
+                 class="w-full h-full object-contain">
           </div>
-          <div class="swiper-slide flex items-center justify-center bg-slate-50 text-slate-400 text-xl">
-            <img src="https://static.ops-coffee.com/static/images/2025/0613.05.png" alt="域名证书系统截图">
+          <div class="swiper-slide flex items-center justify-center bg-slate-50">
+            <img src="https://static.ops-coffee.com/static/images/2025/0613.05.png"
+                 alt="域名证书系统截图"
+                 class="w-full h-full object-contain">
           </div>
-          </div>
+        </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
       </div>
