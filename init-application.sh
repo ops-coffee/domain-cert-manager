@@ -61,7 +61,8 @@ if User.objects.filter(username='admin@ops-coffee.com').exists():
 else:
     User.objects.create_superuser(
         username='admin@ops-coffee.com',
-        password='ops-coffee.com'
+        password='ops-coffee.com',
+        mfa_enable=False,
     )
 " || { echo >&2 "创建管理员失败"; exit 1; }
 
